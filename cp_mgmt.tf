@@ -1,3 +1,4 @@
+
 # Create virtual machine and Accept the agreement for the mgmt-byol for R80.40
 #resource "azurerm_marketplace_agreement" "checkpoint" {
 #  publisher = "checkpoint"
@@ -61,9 +62,9 @@ resource "azurerm_virtual_machine" "cp-mgmt" {
         }
     os_profile {
         computer_name  = "${var.company}-cp-mgmt"
-        admin_username = "azureuser"
-        admin_password = "Vpn123vpn123!"
-        custom_data = file("mgmt_bootstrap.sh") 
+        admin_username = var.username
+        admin_password = var.password
+        custom_data = data.template_file.userdata_setup.rendered 
     }
 
     os_profile_linux_config {
