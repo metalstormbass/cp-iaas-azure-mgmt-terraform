@@ -64,7 +64,7 @@ resource "azurerm_virtual_machine" "cp-mgmt" {
         computer_name  = "${var.company}-cp-mgmt"
         admin_username = var.username
         admin_password = var.password
-        custom_data = data.template_file.userdata_setup.rendered 
+        custom_data = file("mgmt_bootstrap.sh") 
     }
 
     os_profile_linux_config {
