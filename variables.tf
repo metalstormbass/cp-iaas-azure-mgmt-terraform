@@ -23,6 +23,12 @@ variable "mgmt-network-subnet-cidr" {
   description = "Managemnent Subnet"
 }
 
+# Managemnent Private IP
+variable "mgmt-private-ip" {
+  type        = string
+  description = "Managemnent Subnet"
+}
+
 # username
 variable "username" {
   type        = string
