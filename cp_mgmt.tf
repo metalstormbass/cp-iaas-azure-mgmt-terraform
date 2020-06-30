@@ -39,7 +39,9 @@ resource "azurerm_virtual_machine" "cp-mgmt" {
     primary_network_interface_id = azurerm_network_interface.cp-mgmt-external.id
     vm_size               = "Standard_D4s_v3"
     
- #   depends_on = [azurerm_marketplace_agreement.checkpoint]
+   depends_on = [
+    azurerm_network_interface_security_group_association.cpmgmt-nsg-int
+  ]
 
     storage_os_disk {
         name              = "cp-mgmt-disk"
